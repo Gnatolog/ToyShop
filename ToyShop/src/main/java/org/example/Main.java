@@ -1,19 +1,46 @@
 package org.example;
+import org.example.Module.*;
+import java.util.ArrayList;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        ArrayList<Toy> list = new ArrayList<>(); // Список для хранения результата розыграша
+        Saving saving = new Saving();           // Класс для созранения результатов в файл
+        ToyAutomat automat = new ToyAutomat();  // Игровой автомат для загрузки игрушек
+
+        // Создаём игрушки
+        SoftToy softToy = new SoftToy("Beer",2,"Cotton",true);
+        PlasticToy plasticToy = new PlasticToy("Car",6,"ABS",true);
+        Dolls dolls = new Dolls("Doll Irina",8,"silicon",true);
+        SoftToy softToy2 = new SoftToy("Cat",4,"Cotton",true);
+        PlasticToy plasticToy2 = new PlasticToy("tractor",6,"ABS",true);
+        Dolls dolls2 = new Dolls("Doll Gloria",3,"nylon",true);
+
+        // Добавляем игрушки в автомат
+        automat.put(softToy);
+        automat.put(plasticToy);
+        automat.put(dolls);
+        automat.put(softToy2);
+        automat.put(plasticToy2);
+        automat.put(dolls2);
+
+        // Проводим розыгрыш игрушек 10 раз
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+        list.add(automat.get());
+
+        // Сохраняем полученный результат в файл
+        saving.save_files(list);
+
     }
 }
